@@ -3,14 +3,32 @@
       {
         "src": "index.js",
         "use": "@vercel/node"
+      },
+      {
+        "src": "build/**",
+        "use": "@vercel/static"
       }
     ],
     "routes": [
       {
-        // Specify which paths will route to a destination using a regex
-        "src": "/(.*)",
-        // Specify the paths' destination
+        "src": "/products",
         "dest": "index.js"
+      },
+      {
+        "src": "/products/(.*)",
+        "dest": "index.js"
+      },
+      {
+        "src": "/add",
+        "dest": "build/index.html"
+      },
+      {
+        "src": "/",
+        "dest": "build/index.html"
+      },
+      {
+        "src": "/(.+)",
+        "dest": "build/$1"
       }
     ]
   }
